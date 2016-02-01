@@ -1,0 +1,28 @@
+{
+  "name": "moulin-vert-final",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Yorevil <herrmann.jonathan77@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "^1.1.1",
+    "angular-modernizr": "^0.1.1",
+    "angular-resource": "^1.4.9",
+    "angular-route": "^1.4.9",
+    "angular-ui-router": "^0.2.17",
+    "angular": "^1.4.9",
+    "bootstrap": "^3.3.6",
+    "modernizr": "^3.3.1"
+  }
+}
