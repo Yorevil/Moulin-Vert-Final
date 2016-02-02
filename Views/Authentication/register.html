@@ -1,26 +1,35 @@
 <form class="form-auth" ng-submit="register()">
-    <h2>Inscription</h2>
-    <p class="text-warning">{{error_message}}</p>
+    <div class="modal-header"><h2 align="center">Inscription</h2>
+    	<p class="text-warning">{{error_message}}</p>
+    </div>
 
-	<div class="input-group">
-		<span class="input-group-addon" id="basic-addon1">@</span>
-	 	<input type="email" ng-model="user.email" placeholder="Email" class="form-control" aria-describedby="basic-addon1" required>
-	</div>
-	<br>
+    <div class="modal-body">
 
-	<div class="input-group">
-	  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
-	  <input type="username" ng-model="user.username" class="form-control" placeholder="Nom" aria-describedby="basic-addon1" required>
-	</div>
-	<br>
-	
-	<div class="input-group">
-	  	<span class="input-group-addon" id="basic-addon1"><i class="fa fa-lock"></i></span>
-	  	<input type="password" ng-model="user.password" class="form-control" placeholder="Mot de passe" aria-describedby="basic-addon1" required>
-	</div>
-	<br>
+		<div class="input-group">
+			<span class="input-group-addon" id="basic-addon1">@</span>
+		 	<input type="email" ng-model="user.email" placeholder="Email" class="form-control" aria-describedby="basic-addon1" required>
+		</div>
+		<br>
 
-    <select ng-hide="!authenticated" ng-init="user.role = roles[2].name" ng-model="user.role" ng-options="role.name as role.name for role in roles" class="form-control" required></select><br>
-    <input type="submit" value="S'inscrire" class="btn btn-primary" />
+		<div class="input-group">
+		  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
+		  <input type="username" ng-model="user.username" class="form-control" placeholder="Nom" aria-describedby="basic-addon1" required>
+		</div>
+		<br>
+		
+		<div class="input-group">
+		  	<span class="input-group-addon" id="basic-addon1"><i class="fa fa-lock"></i></span>
+		  	<input type="password" ng-model="user.password" class="form-control" placeholder="Mot de passe" aria-describedby="basic-addon1" required>
+		</div>
+		<br>
+
+	    <select ng-hide="!authenticated" ng-init="user.role = roles[2].name" ng-model="user.role" ng-options="role.name as role.name for role in roles" class="form-control" required></select><br>
+
+	</div>
+
+	<div class="modal-footer">
+	    <input type="submit" value="S'inscrire" class="btn btn-primary" />
+	    <button class="btn btn-default" type="button" ng-click="cancel()">Annuler</button>
+	</div>
 
 </form>

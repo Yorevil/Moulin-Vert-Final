@@ -1,5 +1,5 @@
 //auth controller
-main.controller("AuthController", function ($scope, $http, $rootScope, $location) {
+main.controller("AuthController", function ($scope, $http, $rootScope, $location, $modalInstance) {
 $scope.user = {username: '', password: ''};
 $scope.error_message = '';
 //login call to webapi (node implemented service)
@@ -11,13 +11,18 @@ $scope.login = function(){
                 $rootScope.sess = data.user;
                 sessionStorage.setItem('current_user', $rootScope.sess.username);
                 $location.path('/');
+                $modalInstance.close();
                 }
             else{
                 $scope.error_message = data.message;
                 $rootScope.sess = null;
             }
         });
+
+
 };
+
+
   //login call to webapi (node implemented service)
     $scope.register = function(){
 console.log($scope.user);
@@ -26,10 +31,15 @@ if(data.state == 'success'){
                 $rootScope.authenticated = true;
                 $rootScope.current_user = data.user.username;
                 $location.path('/');
+                $modalInstance.close();
             }
             else{
                 $scope.error_message = data.message;
             }
         });
     };
+
+    $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+};
 });

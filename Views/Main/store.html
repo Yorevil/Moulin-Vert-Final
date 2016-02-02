@@ -2,7 +2,6 @@
     <h2>Nos Produits</h2>
 </div>
 
-
 <table class="table table-hover table-bordered">
 	<tr class="well">
     <th class="my_item3">Nos Produits</th>
@@ -10,7 +9,7 @@
     <th class="my_item"><b>Quantité</b></th>
     <th class="">Prix</th>
 		<td class="MyRight" colspan="4" > 
-			<p class="text">Buy Here</p> 
+			<p class="text">Acheter</p> 
 		</td> 
 	</tr>
 
@@ -39,7 +38,7 @@
         </div>
 		</td>
         <td class="MyRight"> {{product.price | currency}} </td>
-        <td class="MyCenter"> <a href="" ng-click="cart.addItem(product.sku, product.name, product.price, 1)"> add to cart </a> </td>
+        <td class="MyCenter"> <a href="" ng-click="cart.addItem(product.sku, product.name, product.price, 1)"> Ajouter au panier</a> </td>
         
         <tr class="well"> 
         	<td class="MyRight2" colspan="4"> <a href="#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
