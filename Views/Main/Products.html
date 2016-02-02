@@ -1,4 +1,40 @@
-<div>
-    <h2>Nos Produits</h2>
-    <h3>Message</h3>
+<p class="text-info">
+    TEst
+</p>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+            <div class="col-md-8">
+                <table class="table table-bordered">
+                    <tr class="well">
+                        <td class="tdRight" colspan="4" >
+                            <a href="default.html#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+                                <i class="icon-shopping-cart" />
+                                <b>{{cart.getTotalCount()}}</b> items, <b>{{cart.getTotalPrice() | currency}}</b>
+                                <span ng-show="cart.getTotalCount(product.sku) > 0"><br>
+                                    Ce produit est dans le panier</span>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    </div>
+</div>
+
+<div class="span 4">
+    <button class="btn btn-primary btn-success"
+            ng-click="cart.addItem(product.sku, product.name, product.price, 1)">
+    <i class="icon-shopping-cart icon-white">Ajouter au panier</i>
+    </button>
+
+    <button class="btn btn-primary btn-danger"
+            ng-click="cart.addItem(product.sku, product.name, product.price, -10000)"
+            ng-disabled="cart.getTotalCount(product.sku)">
+    <i class="icon-trash icon-white">Retirer du panier</i>
+    </button>
+
+    <button class="btn btn-block"
+            onclick="window.location.href='#/store'">
+    <i class="icon-chevron-left icon-white">Revenir à la boutique</i>
+    </button>
 </div>

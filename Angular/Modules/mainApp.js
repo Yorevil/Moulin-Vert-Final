@@ -1,9 +1,13 @@
-/*****************************************************************************/
-/* http://www.codeproject.com/Articles/1052703/MEAN-Stack-Beginner-Tutorial */
-/*****************************************************************************/
+/******************************** Authentication and register *************************************/
+/*********** http://www.codeproject.com/Articles/1052703/MEAN-Stack-Beginner-Tutorial ************/
+/*************************************************************************************************/
+
+/************************************** Store Product *******************************************/
+/* http://www.codeproject.com/Articles/576246/A-Shopping-Cart-Application-Built-with-AngularJS */
+/**********************************************************************************************/
 
 //Angular Starter App
-var main = angular.module("main", ['ui.router','ngRoute','ngResource'])
+var main = angular.module("main", ['ui.router','ngRoute','ngResource','ui.bootstrap', 'ngAnimate'])
 .run(function($http,$rootScope)
 {
     //defining global veriables
@@ -69,12 +73,30 @@ main.config([
                 // }
                 // }
             })
-            .state('products', {
-                url: '/products',
-                templateUrl: 'Products.html',
+
+            /*****************************************************************************/
+            /****************************** Pages des produits ***************************/
+            /*****************************************************************************/
+            .state('store', {
+                url: '/store',
+                templateUrl: 'store.html',
                 caseInsensitiveMatch: true,
-                controller: 'MainController'
+                controller: 'storeController'
             })
+            .state('products/:productSku', {
+                url: '/products/:productSku',
+                templateUrl: 'products.html',
+                caseInsensitiveMatch: true,
+                controller: 'storeController'
+            })
+            .state('cart', {
+                url: '/cart',
+                templateUrl: 'shoppingCart.html',
+                caseInsensitiveMatch: true,
+                controller: 'storeController'
+            })
+            /*****************************************************************************/
+
             .state('references', {
                 url: '/references',
                 templateUrl: 'References.html',
@@ -93,6 +115,8 @@ main.config([
                 caseInsensitiveMatch: true,
                 controller: 'AuthController'
             })
+
+
             .state('unauth',{
                 url: '/unauth',
                 templateUrl: 'unauth.html',
@@ -100,6 +124,17 @@ main.config([
             });
     }
 ]);
+
+main.factory("DataService", function() {
+  var myStore = new store();
+  var myCart = new shoppingCart("AngularStore");
+  myCart.addCheckoutParameters("PayPal", "your PayPal merchant account id");
+  return {
+    store: myStore,
+    cart: myCart
+  };
+});
+
 
 //below factory code is for authentication, User Current Session Need to Get and get to go
 // main.factory('authorizationService', function ($resource, $q, $rootScope, $location) {

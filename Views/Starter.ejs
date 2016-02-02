@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width" />
     <title>Le Moulin Vert</title>
+    <!--<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />-->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
     <link href="Site.css" rel="stylesheet" />
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
@@ -13,11 +15,20 @@
     <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script type="text/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
+    <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.3/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
     <!--<script type="text/javascript" src="bower_components/angular-modernizr/src/feature-detects/forms-reveal.js"></script>
     <script type="text/javascript" src="bower_components/modernizr/src/Modernizr.js"></script>-->
     <script src="/Modules/mainApp.js"></script>
     <script src="/Controllers/MainController.js"></script>
     <script src="/Controllers/AuthController.js"></script>
+    <script src="/Controllers/product.js" type="text/javascript"></script>
+    <script src="/Controllers/store.js" type="text/javascript"></script>
+    <script src="/Controllers/shoppingCart.js" type="text/javascript"></script>
+    <script src="/Controllers/storeController.js" type="text/javascript"></script>
+    <script src="/Controllers/CarouselController.js" type="text/javascript"></script>
+
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
@@ -33,18 +44,18 @@
             
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#/home">Accueil</a></li>
-                    <li><a href="#/references">Nos références</a></li>
-                    <li><a href="#/products">Nos produits</a></li>
-                    <li><a href="#/contact">Contact</a></li>
+                    <li><a href="#/home"><i class="fa fa-home"></i> Accueil</a></li>
+                    <li><a href="#/references"><i class="fa fa-book"></i> Nos références</a></li>
+                    <li><a href="#/store"><i class="fa fa-shopping-cart"></i> Produits</a></li>
+                    <li><a href="#/contact"><i class="fa fa-comment"></i> Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><p class="navbar-right navbar-text" ng-hide="!authenticated">Signed in as {{current_user}} </p></li>
+                    <li><p class="navbar-right navbar-text" ng-hide="!authenticated">Bienvenue {{current_user}} </p></li>
                     <li><p class="navbar-right navbar-text" ng-hide="authenticated">
-                        <a href="#/login">Login</a> or <a href="#/register">Register</a>
+                        <a href="#/login"><i class="fa fa-user"></i> Se connecter</a> ou <a href="#/register"><i class="fa fa-pencil"></i> S'inscrire</a>
                     </p></li>
                     <li><p class="navbar-right navbar-text" ng-show="authenticated">
-                        <a href="#" ng-click="signout()">Logout</a>
+                        <a href="#" ng-click="signout()"> Déconnexion</a>
                     </p></li>
                 </ul>
             </div>
@@ -55,7 +66,7 @@
         </div>
         <hr />
         <footer>
-            <p>My ASP.NET Application</p>
+            <p>Ici se trouve le footer</p>
         </footer>
     </div>
 </body>

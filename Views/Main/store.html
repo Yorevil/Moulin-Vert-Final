@@ -1,0 +1,52 @@
+<div class="jumbotron" align="center">
+    <h2>Nos Produits</h2>
+</div>
+
+
+<table class="table table-hover table-bordered">
+	<tr class="well">
+    <th class="my_item3">Nos Produits</th>
+    <th class="my_item1">Description</th>
+    <th class="my_item"><b>Quantité</b></th>
+    <th class="">Prix</th>
+		<td class="MyRight" colspan="4" > 
+			<p class="text">Buy Here</p> 
+		</td> 
+	</tr>
+
+	<tr ng-repeat="product in store.products | orderBy:'name' | filter:search" > 
+		<td class="MyCenter"><img class='imagem_artigo' ng-src="img/products/{{product.sku}}.jpg" alt="{{product.name}}" /></td>
+		<td class="MyCenter">
+            <a href="#/products/{{product.sku}}"><b>{{product.name}}</b></a><br />
+            {{product.description}}
+        </td>
+        <td>
+        <div class="input-append">
+          <!-- use type=tel instead of number to prevent spinners -->
+          <input
+            class="span3 text-center" type="tel" 
+            ng-model="item.quantity" ng-change="cart.saveItems()" />
+          <button 
+            class="btn btn-success" type="button" 
+            ng-disabled="item.quantity >= 1000"
+            ng-click="cart.addItem(item.sku, item.name, item.price, +1)">+
+          </button>
+          <button 
+            class="btn btn-inverse" type="button" 
+            ng-disabled="item.quantity <= 1"
+            ng-click="cart.addItem(item.sku, item.name, item.price, -1)">-
+          </button>
+        </div>
+		</td>
+        <td class="MyRight"> {{product.price | currency}} </td>
+        <td class="MyCenter"> <a href="" ng-click="cart.addItem(product.sku, product.name, product.price, 1)"> add to cart </a> </td>
+        
+        <tr class="well"> 
+        	<td class="MyRight2" colspan="4"> <a href="#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+				<i class="icon-shopping-cart" /> <b>{{cart.getTotalCount()}}</b> items, <b>{{cart.getTotalPrice() | currency}}</b>
+
+				</a>
+        </td>
+    </tr>
+</table>
+
