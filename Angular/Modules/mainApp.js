@@ -60,19 +60,6 @@ main.config([
                 caseInsensitiveMatch: true,
                 controller: 'MainController'
             })
-            .state('contact', {
-                url: '/contact',
-                templateUrl: 'Contact.html',
-                caseInsensitiveMatch: true,
-                controller: 'MainController'
-                //below code is for authentication
-                // ,
-                // resolve: {
-                // permission: function(authorizationService, $rootScope) {
-                //     return authorizationService.permissionCheck($rootScope.AuthenticRoles.Administrator);
-                // }
-                // }
-            })
 
             /*****************************************************************************/
             /****************************** Pages des produits ***************************/
@@ -97,12 +84,9 @@ main.config([
             })
             /*****************************************************************************/
 
-            .state('references', {
-                url: '/references',
-                templateUrl: 'References.html',
-                caseInsensitiveMatch: true,
-                controller: 'MainController'
-            })
+            /*****************************************************************************/
+            /*************************** Pages d'authentification ************************/
+            /*****************************************************************************/
             .state('login',{
                 url: '/login',
                 templateUrl: 'login.html',
@@ -115,13 +99,13 @@ main.config([
                 caseInsensitiveMatch: true,
                 controller: 'AuthController'
             })
-
-
             .state('unauth',{
                 url: '/unauth',
                 templateUrl: 'unauth.html',
                 caseInsensitiveMatch: true
             });
+            /*****************************************************************************/
+
     }
 ]);
 

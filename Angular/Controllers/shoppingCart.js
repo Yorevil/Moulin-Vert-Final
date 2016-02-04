@@ -8,16 +8,16 @@ function shoppingCart(cartName) {
     this.items = [];
 
     // load items from local storage when initializing
-    this.loadItems();
+    this.loaditems();
 
     // save items to local storage when unloading
     var self = this;
 
     $(window).unload(function () {
         if (self.clearCart) {
-            self.clearItems();
+            self.clearitems();
         }
-        self.saveItems();
+        self.saveitems();
         self.clearCart = false;
     });
 }
@@ -25,7 +25,7 @@ function shoppingCart(cartName) {
 
 
 // load items from local storage
-shoppingCart.prototype.loadItems = function () {
+shoppingCart.prototype.loaditems = function () {
     var items = localStorage != null ? localStorage[this.cartName + "_items"] : null;
     if (items != null && JSON != null) {
         try {
@@ -45,7 +45,7 @@ shoppingCart.prototype.loadItems = function () {
 }
 
 // save items to local storage
-shoppingCart.prototype.saveItems = function () {
+shoppingCart.prototype.saveitems = function () {
     if (localStorage != null && JSON != null) {
         localStorage[this.cartName + "_items"] = JSON.stringify(this.items);
     }
@@ -80,7 +80,7 @@ shoppingCart.prototype.addItem = function (sku, name, price, quantity) {
         }
 
         // save changes
-        this.saveItems();
+        this.saveitems();
     }
 }
 
@@ -109,9 +109,9 @@ shoppingCart.prototype.getTotalCount = function (sku) {
 }
 
 // clear the cart
-shoppingCart.prototype.clearItems = function () {
+shoppingCart.prototype.clearitems = function () {
     this.items = [];
-    this.saveItems();
+    this.saveitems();
 }
 
 // define checkout parameters

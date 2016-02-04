@@ -47,6 +47,8 @@ app.use(express.static(path.join(__dirname, 'Views/Main')));
 app.use(express.static(path.join(__dirname, 'Views/Authentication')));
 app.use(express.static(__dirname + '/public'));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+app.use(express.static(__dirname + '/static'));
+app.use('/img',  express.static(__dirname + '/img'));
 
 //providing auth-api to passport so that it can use it.
 var initPassport = require('./Passport/passport-init');
