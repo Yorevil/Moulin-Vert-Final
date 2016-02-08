@@ -1,34 +1,29 @@
-<p class="text-info">
-    Thanks for shopping at the Angular Store.<br />
-    This is your shopping cart. Here you can edit the items, 
-    go back to the store, clear the cart, or check out.
-</p>
+<div class="jumbotron" align="center">
+    <h2>Votre Panier</h2>
+</div>
 
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="span8">
-
             <!-- items -->
-            <table class="table table-bordered">
-
+            <table class="table table-bordered table-striped" >
                 <!-- header -->
-                <tr class="well">
-                    <td><b>Item</b></td>
-                    <td class="tdCenter"><b>Quantity</b></td>
-                    <td class="tdRight"><b>Price</b></td>
-                    <td />
+                <tr class="well" align="center">
+                    <td><b>Produits</b></td>
+                    <td></td>
+                    <td class="tdCenter" align="center"><b>Quantité</b></td>
+                    <td class="tdRight"align="center"><b>Prix</b></td>
                 </tr>
-
                 <!-- empty cart message -->
                 <tr ng-hide="cart.getTotalCount() > 0" >
-                    <td class="tdCenter" colspan="4">
-                        Your cart is empty.
+                    <td class="tdCenter" colspan="4" align="center">
+                        Votre panier est vide.
                     </td>
                 </tr>
-
                 <!-- cart items -->
                 <tr ng-repeat="item in cart.items | orderBy:'name'">
                     <td>{{item.name}}</td>
+                    <td><img class='img-rounded img-responsive' ng-src="img/products/{{item.sku}}.jpg" alt="{{product.name}}" style="width: 300px;height: 200px;"/></td>
                     <td class="tdCenter">
                       <div class="input-append">
                         <!-- use type=tel instead of  to prevent spinners -->
@@ -42,67 +37,50 @@
                             ng-click="cart.addItem(item.sku, item.name, item.price, +1)">+</button>
                         <button 
                             class="btn btn-inverse" type="button" 
-                            ng-disabled="item.quantity <= 1"
+                            ng-disabled="item.quantity < 0"
                             ng-click="cart.addItem(item.sku, item.name, item.price, -1)">-</button>
                       </div>
                     </td>
-                    <td class="tdRight">{{item.price * item.quantity | currency}}</td>
-                    <td class="tdCenter" title="remove from cart">
-                        <a href="" ng-click="cart.addItem(item.sku, item.name, item.price, -10000000)" >
-                            <i class="icon-remove" />
-                        </a>
-                    </td>
+                    <td class="tdRight">{{item.price * item.quantity | number:2}}€</td>
                 </tr>
 
                 <!-- footer -->
-                <tr class="well">
+                <tr class="well" align="center">
                     <td><b>Total</b></td>
-                    <td class="tdCenter"><b>{{cart.getTotalCount()}}</b></td>
-                    <td class="tdRight"><b>{{cart.getTotalPrice() | currency}}</b></td>
+                    <td class="tdCenter" ><b>{{cart.getTotalCount()}}</b></td>
+                    <td class="tdRight"><b>{{cart.getTotalPrice() | number:2}}€</b></td>
                     <td />
                 </tr>
             </table>
         </div>
+    </div>
 
-        <!-- buttons -->
-        <div class="span4">
-            <p class="text-info">
-                <button 
-                    class="btn btn-block" 
-                    onclick="window.location.href='#/store'">
-                    <i class="icon-chevron-left" /> back to store
-                </button>
-                <button 
-                    class="btn btn-block btn-danger" 
-                    ng-click="cart.clearItems()" 
-                    ng-disabled="cart.getTotalCount() < 1" >
-                    <i class="icon-trash icon-white" /> clear cart
-                </button>
-            </p>
 
-            <br /><br />
-
-            <p class="text-info">
-                <button
-                    class="btn btn-block btn-primary"
-                    ng-click="cart.checkout('PayPal')"
-                    ng-disabled="cart.getTotalCount() < 1">
-                    <i class="icon-ok icon-white" /> check out using PayPal
-                </button>
-            </p>
-                <!-- Stripe needs a form to post to -->
-                <form class="form-stripe"></form>
-
-            <br /><br />
-
-            <p class="text-info">
-                <button 
-                    class="btn btn-block btn-link"
-                    ng-click="cart.checkout('PayPal')"
-                    ng-disabled="cart.getTotalCount() < 1" >
-                    <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" alt="checkout PayPal"/>
-                </button>    
-            </p>
+    <div class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default"
+            class="btn btn-default" 
+            onclick="window.location.href='#/store'"><i class="fa fa-chevron-left"> Retour aux produits</i></button>
         </div>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default" 
+                    ng-click="cart.clearItems()" 
+                    ng-disabled="cart.getTotalCount() < 1"
+                    type="button"><i class="fa fa-trash-o"> Vider le panier</i>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default"
+                ng-click="cart.checkout('PayPal')"
+                ng-disabled="cart.getTotalCount() < 1"
+                type="button">
+                <i class="fa fa-cc-paypal"> Payer par PayPal</i>
+            </button>
+        </div>
+    </div>
+
+
+    <div>
+        <!-- Stripe needs a form to post to -->
+        <form class="form-stripe"></form>
     </div>
 </div>
